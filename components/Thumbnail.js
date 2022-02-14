@@ -1,9 +1,12 @@
 import Image from "next/image";
-import { ThumbUpIcon } from "@heroicons/react/outline";
+import { ThumbUpIcon, FilmIcon } from "@heroicons/react/outline";
 import { forwardRef } from "react";
 
 const Thumbnail = forwardRef(({ result }, ref) => {
   const BASE_URL = "https://image.tmdb.org/t/p/original/";
+  const contentType = () => {
+    return result.media_type === "movie" ? "Movie" : "TV";
+  };
   return (
     <div
       ref={ref}
@@ -28,7 +31,7 @@ const Thumbnail = forwardRef(({ result }, ref) => {
             result.original_name}
         </h2>
         <p className="flex items-center opacity-0 group-hover:opacity-100">
-          {result.media_type && `${result.media_type} •`}{" "}
+          {result.media_type && `${contentType()} •`}{" "}
           {result.release_date || result.first_air_date} •{" "}
           <ThumbUpIcon className="h-5 mx-2" />
           {result.vote_count}
