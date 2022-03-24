@@ -1,7 +1,8 @@
-import { useRouter } from "next/router";
-import requests from "../utils/requests";
+import { useRouter } from 'next/router';
+import requests from '../utils/requests';
 
-function Nav() {
+function GenreNav() {
+  // Using router hook to push users to chosen genre
   const router = useRouter();
   return (
     <nav className="relative">
@@ -21,4 +22,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default GenreNav;
